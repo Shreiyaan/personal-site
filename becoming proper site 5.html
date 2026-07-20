@@ -1,0 +1,464 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Shreiyaan P Shah - Personal Website</title>
+
+        <style>
+            /* 1. Global Background Wrap */
+            body {
+                background: linear-gradient(135deg, #0f0c20 0%, #15103c 30%, #2b1055 60%, #591a75 100%);
+                background-attachment: fixed;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                margin: 0;
+                padding: 0;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                box-sizing: border-box;
+            }
+
+            /* 2. Top Navigation Header */
+            .navbar {
+                width: 100%;
+                max-width: 1100px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 30px 20px;
+                box-sizing: border-box;
+            }
+
+            .nav-logo {
+                font-size: 1.1rem;
+                font-weight: 700;
+                color: #ffffff;
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 25px;
+                align-items: center;
+            }
+
+            .nav-links a {
+                color: rgba(255, 255, 255, 0.7);
+                text-decoration: none;
+                font-size: 0.95rem;
+                font-weight: 500;
+                transition: all 0.2s ease;
+            }
+
+            .nav-links a:hover {
+                color: #ffffff;
+            }
+
+            /* Contact Dropdown */
+            .contact-dropdown {
+                position: relative;
+                display: inline-block;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                right: 0;
+                background: rgba(21, 16, 60, 0.95);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                min-width: 180px;
+                box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+                border-radius: 12px;
+                z-index: 10;
+                margin-top: 10px;
+                overflow: hidden;
+            }
+
+            .dropdown-content a {
+                color: rgba(255, 255, 255, 0.8);
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                font-size: 0.95rem;
+            }
+
+            .dropdown-content a:hover {
+                background: rgba(255, 255, 255, 0.1);
+                color: #ffffff;
+            }
+
+            .contact-dropdown:hover .dropdown-content {
+                display: block;
+            }
+
+            .get-in-touch-btn {
+                background: #3b82f6;
+                color: white !important;
+                padding: 10px 20px;
+                border-radius: 100px;
+                font-weight: 600 !important;
+                transition: background 0.2s;
+            }
+
+            .get-in-touch-btn:hover {
+                background: #2563eb;
+            }
+
+            /* 3. Main Split-Screen Container */
+            .main-container {
+                max-width: 1100px;
+                width: 100%;
+                padding: 40px 20px 80px 20px;
+                box-sizing: border-box;
+                display: grid;
+                grid-template-columns: 1.2fr 0.8fr;
+                gap: 50px;
+                align-items: start;
+            }
+
+            /* Left Column Elements */
+            .left-column {
+                display: flex;
+                flex-direction: column;
+                gap: 25px;
+            }
+
+            .subtitle-tag {
+                color: #a78bfa;
+                font-size: 1rem;
+                font-weight: 600;
+                margin: 0;
+            }
+
+            .hero-title {
+                font-size: 3.5rem;
+                color: #ffffff;
+                margin: 5px 0 15px 0;
+                font-weight: 800;
+                letter-spacing: -1.5px;
+                line-height: 1.1;
+            }
+
+            .highlight {
+                background: #facc15;
+                color: #0f0c20;
+                padding: 0 6px;
+                border-radius: 4px;
+            }
+
+            .hero-desc {
+                color: #cbd5e1;
+                font-size: 1.1rem;
+                line-height: 1.6;
+                margin: 0 0 20px 0;
+            }
+
+            .action-row {
+                display: flex;
+                gap: 15px;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+            .btn-main {
+                background: #ffffff;
+                color: #0f0c20;
+                padding: 12px 24px;
+                border-radius: 100px;
+                font-weight: 600;
+                text-decoration: none;
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+
+            .btn-main:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 20px rgba(255,255,255,0.2);
+            }
+
+            .btn-text {
+                color: #ffffff;
+                text-decoration: none;
+                font-weight: 600;
+                transition: opacity 0.2s;
+            }
+
+            .btn-text:hover {
+                opacity: 0.8;
+            }
+
+            /* Social Icons Row */
+            .social-icons {
+                display: flex;
+                gap: 15px;
+                margin-top: 5px;
+            }
+
+            .social-icon {
+                width: 40px;
+                height: 40px;
+                background: rgba(255, 255, 255, 0.08);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                transition: all 0.2s;
+            }
+
+            .social-icon:hover {
+                background: rgba(255, 255, 255, 0.2);
+                transform: translateY(-2px);
+            }
+
+            /* Accordion Grid Elements */
+            .sections-wrapper {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                margin-top: 10px;
+            }
+
+            .section {
+                background: rgba(255, 255, 255, 0.07); 
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                padding: 20px 25px;
+                border-radius: 16px;
+                border: 1px solid rgba(255, 255, 255, 0.15); 
+                transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                cursor: pointer;
+                overflow: hidden;
+            }
+
+            .section:hover:not(.active) {
+                background: rgba(255, 255, 255, 0.12);
+                border-color: rgba(255, 255, 255, 0.3);
+            }
+
+            .section.active {
+                background: rgba(255, 255, 255, 0.14);
+                border-color: rgba(255, 255, 255, 0.5);
+                box-shadow: 0 15px 30px rgba(118, 75, 162, 0.3);
+            }
+
+            .section h2 {
+                color: #ffffff;
+                margin: 0;
+                font-size: 1.3rem;
+                font-weight: 700;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .section h2::after {
+                content: '+';
+                font-size: 1.3rem;
+                transition: transform 0.4s ease;
+                opacity: 0.6;
+            }
+            .section.active h2::after {
+                transform: rotate(45deg);
+                opacity: 1;
+            }
+
+            .content-wrapper {
+                max-height: 0;
+                opacity: 0;
+                transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            .section.active .content-wrapper {
+                max-height: 500px;
+                opacity: 1;
+                margin-top: 15px;
+            }
+
+            .section p {
+                line-height: 1.6;
+                color: #d1d5db; 
+                font-size: 1rem;
+                margin: 0;
+            }
+
+            /* Right Column Frame Style with Profile Image */
+            .right-column {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                position: sticky;
+                top: 40px;
+            }
+
+            .profile-card-frame {
+                background: #000000;
+                border-radius: 24px;
+                padding: 15px;
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                width: 100%;
+                max-width: 360px;
+                text-align: center;
+                transform: rotate(2deg);
+                transition: transform 0.3s ease;
+                box-sizing: border-box;
+            }
+
+            .profile-card-frame:hover {
+                transform: rotate(0deg) scale(1.02);
+            }
+
+            .profile-image {
+                width: 100%;
+                height: 380px;
+                object-fit: cover;
+                border-radius: 16px;
+                display: block;
+            }
+
+            .caption {
+                color: #94a3b8;
+                font-size: 0.85rem;
+                margin-top: 15px;
+                text-align: center;
+            }
+
+            @media (max-width: 900px) {
+                .main-container {
+                    grid-template-columns: 1fr;
+                }
+                .right-column {
+                    position: relative;
+                    top: 0;
+                    margin-top: 20px;
+                }
+                .hero-title {
+                    font-size: 2.8rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+
+        <!-- 1. Navigation Panel Link Array -->
+        <nav class="navbar">
+            <a href="#" class="nav-logo">
+                <span style="font-size: 0.8rem;">▲</span> Shreiyaan P Shah
+            </a>
+            <div class="nav-links">
+                <a href="#projects" onclick="openSectionByIndex(1)">Projects</a>
+                <a href="#achievements" onclick="openSectionByIndex(2)">Achievements</a>
+                <a href="#about" onclick="openSectionByIndex(0)">About</a>
+                
+                <div class="contact-dropdown">
+                    <a href="javascript:void(0)" class="get-in-touch-btn">Get in touch ▾</a>
+                    <div class="dropdown-content">
+                        <a href="mailto:shreiyaanpshah@gmail.com">Send an Email</a>
+                        <a href="https://linkedin.com/in/your-username" target="_blank">View LinkedIn Profile</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- 2. Main Workspace Layout Grid -->
+        <div class="main-container">
+            
+            <!-- LEFT COMPONENT COLUMN -->
+            <div class="left-column">
+                <div>
+                    <p class="subtitle-tag">Student · Mumbai & CIRS</p>
+                    <h1 class="hero-title">Hi, I'm <span class="highlight">Shreiyaan</span>.</h1>
+                    <p class="hero-desc">I am deeply interested in Mathematics, Physics, and Public Speaking. I love building ideas, exploring complex concepts, and sharing them with the world.</p>
+                    
+                    <div class="action-row">
+                        <a href="#projects" class="btn-main" onclick="openSectionByIndex(1)">See my projects</a>
+                        <a href="mailto:shreiyaanpshah@gmail.com" class="btn-text">Say hello ›</a>
+                    </div>
+
+                    <!-- Clean Social Shortcut Anchors -->
+                    <div class="social-icons">
+                        <a href="https://linkedin.com/in/your-username" target="_blank" class="social-icon" title="LinkedIn">in</a>
+                        <a href="mailto:shreiyaanpshah@gmail.com" class="social-icon" title="Email">@</a>
+                    </div>
+                </div>
+
+                <!-- Dropdown Card Stack -->
+                <div class="sections-wrapper" id="sectionsWrapper">
+                    
+                    <!-- About Me -->
+                    <div class="section" onclick="toggleSection(this)">
+                        <h2>About Me</h2>
+                        <div class="content-wrapper">
+                            <p>I am a student from Mumbai studying at Chinmaya International Residential School. I am highly interested in Mathematics and Physics. I have graduated Trinity College Grade 8 in Communication Skills. This July, I placed 3rd at the IIT Bombay Debate and Public Speaking Summer Camp.</p>
+                        </div>
+                    </div>
+
+                    <!-- Projects -->
+                    <div class="section" onclick="toggleSection(this)">
+                        <h2>My Projects</h2>
+                        <div class="content-wrapper">
+                            <p>This is where I organise my projects and outside-classroom stuff.</p>
+                        </div>
+                    </div>
+
+                    <!-- Achievements -->
+                    <div class="section" onclick="toggleSection(this)">
+                        <h2>Achievements</h2>
+                        <div class="content-wrapper">
+                            <p>This is where I compile my extracurricular achievements.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- RIGHT GRAPHIC FRAME COMPONENT -->
+            <div class="right-column">
+                <div class="profile-card-frame">
+                    <img src="profile.png" alt="Shreiyaan P Shah" class="profile-image">
+                </div>
+                <div class="caption">me trying to figure out the universe</div>
+            </div>
+
+        </div>
+
+        <!-- 3. Dynamic DOM State Manipulator Script -->
+        <script>
+            function toggleSection(element) {
+                const wrapper = document.getElementById('sectionsWrapper');
+                
+                if (element.classList.contains('active')) {
+                    element.classList.remove('active');
+                } else {
+                    const activeElement = wrapper.querySelector('.section.active');
+                    if (activeElement) {
+                        activeElement.classList.remove('active');
+                    }
+                    element.classList.add('active');
+                }
+            }
+
+            function openSectionByIndex(index) {
+                const wrapper = document.getElementById('sectionsWrapper');
+                const targets = wrapper.querySelectorAll('.section');
+                if(targets[index]) {
+                    const activeElement = wrapper.querySelector('.section.active');
+                    if (activeElement) activeElement.classList.remove('active');
+                    
+                    targets[index].classList.add('active');
+                    targets[index].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        </script>
+
+    </body>
+</html>
